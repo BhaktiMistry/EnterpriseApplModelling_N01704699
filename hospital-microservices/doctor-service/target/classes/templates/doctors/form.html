@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Form</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${doctor.id == null ? 'Add Doctor' : 'Edit Doctor'}"></h1>
+    <form th:action="${doctor.id == null ? '/doctors/add' : '/doctors/edit/' + doctor.id}" method="post" th:object="${doctor}">
+        <label>Name</label>
+        <input type="text" th:field="*{name}" required>
+        <label>Specialty</label>
+        <input type="text" th:field="*{specialty}" required>
+        <label>Email</label>
+        <input type="email" th:field="*{email}" required>
+        <button class="btn" type="submit">Save</button>
+        <a th:href="@{/doctors}">Back</a>
+    </form>
+</div>
+</body>
+</html>
